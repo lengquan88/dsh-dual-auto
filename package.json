@@ -7,8 +7,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://atomgit.com/guaikepa/zhonghua.git",
-    "directory": "dsh-dual-auto"
+    "url": "https://github.com/lengquan88/dsh-dual-auto.git"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
   },
   "type": "module",
   "main": "lib/index.js",
