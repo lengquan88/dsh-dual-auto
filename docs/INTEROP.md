@@ -29,3 +29,23 @@ The canonical field definitions live in `src/core.ts` (`createCore`,
 `exportFingerprints`, `exportStats`, `exportLog`) and their Python twin in
 `dao/model_router.py` of the parent project. Changes must be mirrored on both
 sides; `dsh_router_*` files are the contract.
+
+## Verified interop (measured 2026-08-24)
+
+- **Fingerprint formula**: identical (100 chars → `band0`, 250 → `band1`) —
+  verified against `model_router.task_fingerprint` with the plugin's real
+  `fingerprintOf` output.
+- **Fingerprints file** `{fingerprint: {escapes, hits}}` loads into
+  `ModelRouter` as a v2 subset (`learned_ts`/`last_escape_ts` default to now),
+  and `route()` then force-upgrades the fingerprint (`reason=逃逸学习`);
+  verified end-to-end in `tests/test_dual_auto_interop.py`.
+
+## Known gap (honest negative result)
+
+The Python `learn_escapes_from_log` reads an **`escape`** field, but the
+plugin's decision-log rows carry **`escaped`** (core) /
+**`auto_escaped`** (runTask overlay). As a result `learn_escapes_from_log`
+learns 0 entries from plugin log rows — the interop path for escape state is
+the **fingerprints file**, not the log. Recommended alignment: either accept
+`escaped` in the Python reader, or emit an `escape: true` alias in a future
+plugin release.
