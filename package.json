@@ -1,7 +1,7 @@
 {
   "name": "@lengquan88/dsh-dual-auto",
   "description": "双模型 Auto 路由插件: flash 低成本直返 / pro 高成本升级 + 逃逸学习闭环 + 持久化互通",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publishConfig": {
     "access": "public"
   },
