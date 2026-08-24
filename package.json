@@ -29,7 +29,8 @@
     "lib/index.js",
     "lib/core.js",
     "lib/types/**/*.js",
-    "lib/types/**/*.d.ts"
+    "lib/types/**/*.d.ts",
+    "cordis.patch.yml"
   ],
   "license": "MIT",
   "peerDependencies": {
