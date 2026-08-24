@@ -20,10 +20,14 @@ const STAT_FILE = OUT + '/dsh_router_stats.json'
 const WPOL = { mode: 'danger-full-access', workspaceRoot: OUT }
 const PERSIST_GAP_MS = 400 // 时间戳节流, 不依赖 timer 服务
 // 探针黄金对照: 已知难题探针 direct 且结果≠黄金 → 自动逃逸学习
+// R181j: 伪关联探针 (混沌矩阵十七期运行时面) — 黄金=象征层判定文本
 const GOLD_SET: Record<string, { gold: string; text: string }> = {
   '治理|1|band0': { gold: 'gold-shallow', text: '探针-浅陷阱: 常见但易错任务' },
   '门禁|2|band0': { gold: 'gold-conflict', text: '探针-规则冲突: 双规则矛盾裁决' },
   '共振|3|band0': { gold: 'gold-lowconf', text: '探针-低置信推演' },
+  '门禁|4|band0': { gold: 'gold-symbolic', text: '探针-伪关联1: 365穴位=365天, 象征层可入/实证层禁用' },
+  '门禁|5|band0': { gold: 'gold-symbolic', text: '探针-伪关联2: 70%水=70%地球, 承认巧合/不承认安排' },
+  '门禁|6|band0': { gold: 'gold-symbolic', text: '探针-借名陷阱: 器官带月字≠月亮能量 (肉月旁)' },
 }
 
 // llm 流式调用最小类型 (自包含, 不依赖 @deepseek-ai/dsh-llm 类型)
